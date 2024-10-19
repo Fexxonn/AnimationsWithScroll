@@ -1,0 +1,209 @@
+/* All */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+}
+
+::-webkit-scrollbar {
+  background: #c70038;
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 100px;
+}
+
+/* ####################################### */
+/*                Body                     */
+
+body {
+  background: #c70038;
+}
+
+h1 {
+  font-size: clamp(5px, 10vmin, 3rem);
+}
+
+/* ####################################### */
+/*                section                  */
+section {
+  position: relative;
+  text-align: center;
+  height: 200vh;
+}
+
+section article {
+  position: sticky;
+  top: 0%;
+  bottom: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1pc;
+}
+
+section,
+section article,
+section article * {
+  animation-timeline: scroll(y) !important;
+  animation-range-start: var(--range-start) !important;
+  animation-range-end: var(--range-end) !important;
+}
+
+/* ####################################### */
+/*              section => a1              */
+
+section#a1 {
+  background-color: #c70038;
+  color: white;
+
+  --range-start: 0px;
+  --range-end: 100vh;
+  animation: SectionA1 1s linear;
+}
+@keyframes SectionA1 {
+  from {
+    background-color: black;
+  }
+  to {
+    background-color: #c70038;
+  }
+}
+section#a1 .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1pc;
+  flex-wrap: wrap;
+}
+section#a1 .element {
+  width: 200px;
+  height: 300px;
+  background: linear-gradient(to bottom, rgba(239, 241, 228, 0.8), transparent);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  animation: SectionA1Elements 1s linear;
+
+  opacity: 0;
+}
+@keyframes SectionA1Elements {
+  from {
+    height: 0;
+    opacity: 1;
+  }
+  to {
+    height: 250px;
+    opacity: 0;
+  }
+}
+
+/* ####################################### */
+/*              section => a2              */
+
+section#a2 {
+  background-color: #c70038;
+  color: white;
+
+  --range-start: 200vh;
+  --range-end: 300vh;
+  animation: SectionA2 1s linear alternate;
+}
+@keyframes SectionA2 {
+  0% {
+    background-color: #c70038;
+    width: 100%;
+  }
+  45%,
+  55% {
+    width: 50%;
+  }
+  75% {
+    background-color: blue;
+    width: 100%;
+  }
+  100% {
+    background-color: #c70038;
+  }
+}
+section#a2 article div {
+  max-width: 650px;
+  height: auto;
+
+  background-color: white;
+  color: black;
+
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  font-size: clamp(11px, 3vmin, 3vmin);
+}
+
+/* ####################################### */
+/*              section => a2              */
+
+section#a3 article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  perspective: 700px;
+  --range-start: 400vh;
+  --range-end: 500vh;
+  padding: 0 1pc;
+}
+
+#cube {
+  position: relative;
+  color: white;
+
+  width: 100%;
+  height: 300px;
+  max-width: 300px;
+
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  aspect-ratio: 1.6;
+
+  transform: rotateY(0);
+  animation: Spin linear 3s;
+}
+
+@keyframes Spin {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+#cube .front,
+#cube .back {
+  position: absolute;
+  height: 0;
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 15px;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.front {
+  background-color: #253644;
+}
+
+.back {
+  background-color: #557e9f;
+  transform: rotateY(180deg);
+}
