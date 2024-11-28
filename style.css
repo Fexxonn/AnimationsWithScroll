@@ -111,20 +111,16 @@ section#a2 {
 
   --range-start: 200vh;
   --range-end: 300vh;
-  animation: SectionA2 1s linear alternate;
+  animation: SectionA2 1s linear;
 }
 @keyframes SectionA2 {
   0% {
     background-color: #c70038;
     width: 100%;
   }
-  45%,
-  55% {
+  50% {
     width: 50%;
-  }
-  75% {
-    background-color: blue;
-    width: 100%;
+    background-color: #557e9f;
   }
   100% {
     background-color: #c70038;
